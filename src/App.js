@@ -19,7 +19,19 @@ import "./App.css";
  * <h1></h1>
  */
 function App() {
-  return <div>Hello World</div>;
+  return <CityApp />;
+}
+
+/**
+ * SPECIAL
+ * COMPONENT BOY
+ * IT RETUNRNS JSX.
+ * LOOK AT THE METHOD NAME AS WELL>
+ *
+ * <CityApp>
+ */
+function CityApp() {
+  return <h1>MUMBAI</h1>;
 }
 
 export default App;
