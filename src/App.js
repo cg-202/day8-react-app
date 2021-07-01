@@ -18,14 +18,17 @@ import { useState } from "react";
  * <TAG-NAME></TAG-NAME>
  * <div></div>
  * <h1></h1>
+ *
+ * ATTRIBUTES ARE OPTIONAL
  */
 function App() {
   return (
     <div>
-      <FruitApp />
-      <NatureTag name="RIVER GANGA" />
-      <CityApp name="Delhi" id="d" />
-      <CityApp name="Kolkata" id="k" />
+      <div>Delhi</div>
+      <div>Kolkata</div>
+
+      <CityApp id="D" />
+      <CityApp />
       <CityApp name="Mumbai" id="m" />
       <CityApp name="Chennai" id="c" />
     </div>
@@ -45,27 +48,12 @@ function App() {
  *
  * {id, name} = props
  */
-function CityApp({ id, name }) {
+function CityApp({ id = "DID", name = "DNAME" }) {
   return (
     <h1>
       {id} :: {name}
     </h1>
   );
-}
-
-/**
- * let {name} = props;
- */
-function NatureTag(props) {
-  return <h1>{props.name}</h1>;
-}
-
-/**
- * HARDCODED COMPONENT
- * <FruitApp
- */
-function FruitApp() {
-  return <h1>Mango</h1>;
 }
 
 export default App;
