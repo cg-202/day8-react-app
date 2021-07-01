@@ -2,57 +2,47 @@ import logo from "./logo.svg";
 import "./App.css";
 import { useState } from "react";
 
-/**
- * SPECIAL FUNCTION. ITS RETURNS JSX.
- *
- * METHOD
- * COMPONENT BOY/GIRL
- * Method Name :: Starts with Capital
- * React Component
- *
- * This function is creating a CUSTOM TAG / COMPONENT.
- * React Tags Starts with CAPITAL LETTER
- * <App />
- *
- * HTML Has A SET OF PREFDEINFED TAGS :: Can we create CUSTOM TAGS?
- * <TAG-NAME></TAG-NAME>
- * <div></div>
- * <h1></h1>
- *
- * ATTRIBUTES ARE OPTIONAL
- */
 function App() {
   return (
     <div>
-      <div>Delhi</div>
-      <div>Kolkata</div>
-
-      <CityApp id="D" />
-      <CityApp />
-      <CityApp name="Mumbai" id="m" />
-      <CityApp name="Chennai" id="c" />
+      <SocialPost />
+      <SocialPost />
+      <SocialPost />
+      <SocialPost />
     </div>
   );
 }
 
-/**
- * SPECIAL
- * COMPONENT BOY
- * IT RETUNRNS JSX.
- * LOOK AT THE METHOD NAME AS WELL>
- *
- * LITTLE WIERD :: CITY IS STATIC. :: PROBLEM SOLVED :: DYMAIC COMPONEENT
- * RESUCE :: FUNCTION PARAMETER  :: USING THE CONCEPT OF PROPS
- *
- * <CityApp>
- *
- * {id, name} = props
- */
-function CityApp({ id = "DID", name = "DNAME" }) {
+function SocialPost() {
+  const [commentList, setCommentList] = useState([]);
+
+  const addNewComment = () => {
+    const newCommentList = ["This is new Comment", ...commentList];
+    setCommentList(newCommentList);
+  };
+
   return (
-    <h1>
-      {id} :: {name}
-    </h1>
+    <div>
+      <h1 className="bg-dark text-light p-5 text-center mb-2">DELHI</h1>
+
+      {commentList.map((item, index) => (
+        <div key={index} className="alert-secondary p-1 mb-1">
+          {item}
+        </div>
+      ))}
+
+      <input
+        type="text"
+        className="form-control form-control-sm mb-1"
+        placeholder="Add your comment..."
+      />
+      <input
+        type="button"
+        value="Submit"
+        onClick={addNewComment}
+        className="btn btn-sm alert-secondary w-100 mb-3"
+      />
+    </div>
   );
 }
 
