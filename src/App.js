@@ -3,10 +3,41 @@ import "./App.css";
 import { useState } from "react";
 
 function App() {
+  const [postList, setPostList] = useState([]);
+
+  const [inputPost, setInputPost] = useState("");
+  const updateInputPost = (e) => {
+    setInputPost(e.target.value);
+  };
+
+  const addPostOnWall = () => {
+    const newPostList = [inputPost, ...postList];
+    setPostList(newPostList);
+    setInputPost("");
+  };
+
   return (
     <div>
-      <SocialPost post="Delhi" />
-      <SocialPost post="Mumbai" />
+      <div className="bg-dark p-5 mb-2">
+        <input
+          type="text"
+          style={{ height: "75px" }}
+          value={inputPost}
+          onChange={updateInputPost}
+          className="form-control form-control-lg mb-1"
+          placeholder="Add new Post"
+        />
+        <input
+          type="button"
+          className="btn btn-secondary w-100"
+          onClick={addPostOnWall}
+          value="POST ON WALL"
+        />
+      </div>
+
+      {postList.map((item, index) => (
+        <SocialPost key={index} post={item} />
+      ))}
     </div>
   );
 }
@@ -29,7 +60,7 @@ function SocialPost({ post }) {
 
   return (
     <div>
-      <h1 className="bg-dark text-light p-5 text-center mb-2">{post}</h1>
+      <h1 className="bg-secondary text-light p-5 text-center mb-2">{post}</h1>
 
       {commentList.map((item, index) => (
         <div key={index} className="bg-light p-1 mb-1">
