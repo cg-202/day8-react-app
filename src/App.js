@@ -24,6 +24,7 @@ function App() {
       <CityApp />
       <CityApp />
       <CityApp />
+      <CityApp />
     </div>
   );
 }
@@ -33,6 +34,8 @@ function App() {
  * COMPONENT BOY
  * IT RETUNRNS JSX.
  * LOOK AT THE METHOD NAME AS WELL>
+ *
+ * LITTLE WIERD :: CITY IS STATIC.
  *
  * <CityApp>
  */
