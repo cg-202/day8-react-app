@@ -7,8 +7,6 @@ function App() {
     <div>
       <SocialPost />
       <SocialPost />
-      <SocialPost />
-      <SocialPost />
     </div>
   );
 }
@@ -16,9 +14,17 @@ function App() {
 function SocialPost() {
   const [commentList, setCommentList] = useState([]);
 
+  const [inputComment, setInputComment] = useState("");
+  const updateInputComment = (e) => {
+    setInputComment(e.target.value);
+  };
+
   const addNewComment = () => {
-    const newCommentList = ["This is new Comment", ...commentList];
+    const newCommentList = [...commentList, inputComment];
     setCommentList(newCommentList);
+
+    // Clear the input
+    setInputComment("");
   };
 
   return (
@@ -26,13 +32,15 @@ function SocialPost() {
       <h1 className="bg-dark text-light p-5 text-center mb-2">DELHI</h1>
 
       {commentList.map((item, index) => (
-        <div key={index} className="alert-secondary p-1 mb-1">
+        <div key={index} className="bg-light p-1 mb-1">
           {item}
         </div>
       ))}
 
       <input
         type="text"
+        value={inputComment}
+        onChange={updateInputComment}
         className="form-control form-control-sm mb-1"
         placeholder="Add your comment..."
       />
