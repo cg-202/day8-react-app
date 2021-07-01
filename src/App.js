@@ -11,9 +11,15 @@ function App() {
   };
 
   const addPostOnWall = () => {
-    const newPostList = [inputPost, ...postList];
-    setPostList(newPostList);
-    setInputPost("");
+    if (inputPost !== "") {
+      // We are updating the list. without any
+      const newPostList = [inputPost, ...postList];
+      setPostList(newPostList);
+      setInputPost("");
+    } else {
+      // Absolute bad way.
+      alert("Empty Post Not Allwoed!");
+    }
   };
 
   return (
@@ -51,11 +57,15 @@ function SocialPost({ post }) {
   };
 
   const addNewComment = () => {
-    const newCommentList = [...commentList, inputComment];
-    setCommentList(newCommentList);
+    if (inputComment !== "") {
+      const newCommentList = [...commentList, inputComment];
+      setCommentList(newCommentList);
 
-    // Clear the input
-    setInputComment("");
+      // Clear the input
+      setInputComment("");
+    } else {
+      alert("Empty Comment now allowed!!");
+    }
   };
 
   return (
