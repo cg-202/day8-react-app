@@ -5,13 +5,13 @@ import { useState } from "react";
 function App() {
   return (
     <div>
-      <SocialPost />
-      <SocialPost />
+      <SocialPost post="Delhi" />
+      <SocialPost post="Mumbai" />
     </div>
   );
 }
 
-function SocialPost() {
+function SocialPost({ post }) {
   const [commentList, setCommentList] = useState([]);
 
   const [inputComment, setInputComment] = useState("");
@@ -29,7 +29,7 @@ function SocialPost() {
 
   return (
     <div>
-      <h1 className="bg-dark text-light p-5 text-center mb-2">DELHI</h1>
+      <h1 className="bg-dark text-light p-5 text-center mb-2">{post}</h1>
 
       {commentList.map((item, index) => (
         <div key={index} className="bg-light p-1 mb-1">
