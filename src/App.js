@@ -19,7 +19,13 @@ import "./App.css";
  * <h1></h1>
  */
 function App() {
-  return <CityApp />;
+  return (
+    <div>
+      <CityApp />
+      <CityApp />
+      <CityApp />
+    </div>
+  );
 }
 
 /**
